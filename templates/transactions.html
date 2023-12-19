@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        
+*{
+margin: 0;
+padding: 0;
+
+
+}
+
+body{
+    background: linear-gradient(to right, #f6d365, #fda085);
+    width: 100vw;
+    height:100vh;
+}
+#main-dashboard{
+    
+    align-self: center;
+    margin: 10vh 10vw;
+    width: 96vw;
+    height: 50vh;
+    background: linear-gradient(to right, #fcfbfa, #fff0f0);
+    color:rgb(82, 81, 81);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  padding: 16px;
+  margin: 16px;
+}
+
+#dashboard-h1{
+    font-weight: 500;
+    font-size: xx-large;
+    margin-left: 0.5vw;
+}
+
+#table{
+    width: 90vw;
+    height:fit-content;
+} 
+
+#table thead{
+    font-size: x-large;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   font-weight: bolder;
+}
+ 
+tbody td{
+   
+    margin-left:  0.3vw;
+    margin-top: 0.4vh;
+    width: 0.5vw;
+    height: 1vh;
+    font-size: large;
+     
+} 
+
+#transaction-action a{
+    border: 2px solid black; 
+    height:5vh;
+    margin: 2px 4px; 
+    padding: 2px 4px;
+    text-decoration: none;
+    border: none;
+}
+#div-a-add-account{
+    width: 90vw;
+   margin-top: 2vh;
+    
+}
+#a-add-account{
+    color:white;
+    background: linear-gradient(to top right,#23386599,#1f1f7c77,#0c234a99);
+margin-top: 4px;
+margin-bottom: 4px;
+font-size: larger;
+padding-bottom: 2px;
+padding-top: 2px;
+text-decoration: none;
+border: none;
+ 
+}
+
+#a-add-account:hover{ 
+    background-color: #2c2cca33;
+   box-shadow: 1px 2px #0000ff55;
+   
+}
+#a-edit{
+    background: linear-gradient(to top, orange,orange);
+    color: white;
+  
+    
+}
+#a-delete{
+    background: linear-gradient(to top,red,red);
+    color: white;
+   
+}
+
+#a-edit:hover{
+    background-color: #e3950344;
+    color: white;
+    box-shadow: 1px 2px #0000ff55;
+}
+#a-delete:hover{
+    background-color:rgb(171, 4, 4);
+    box-shadow: 1px 2px #0000ff55;
+}
+
+
+
+
+
+    </style>
+
+  
+</head>
+<body>
+    <div  id="main">
+<section id="main-dashboard">
+<h1 id="dashboard-h1">Transaction Records</h1>
+<table id="table">
+    <thead id="thead">
+        <tr>
+        <td>Name</td>
+        <td>Amount</td>
+        <td>Date</td>
+        <td>Action</td>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- this is code template of the jinja  -->
+        {% for transaction in transactions %}  
+        <tr>
+<td >{{transaction.name}}</td>
+<td>{{transaction.amount}}</td>
+<td>{{transaction.date}}</td>
+<td id="transaction-action">
+    <a  id="a-edit"class="btn btn-warning" href="{{ url_for('edit_transaction', transaction_id=transaction.id) }}">Edit</a>
+    <a id="a-delete" class="btn btn-primary" href="{{ url_for('delete_transaction', transaction_id=transaction.id) }}">Delete</a>
+</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div id="div-a-add-account">
+    <a href="{{url_for('add_transaction')}}" class="btn btn-success" id="a-add-account">Add New Account</a>
+    </div>
+</section>
+</div>
+  
+</body>
+</html>
