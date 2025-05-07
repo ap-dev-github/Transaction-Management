@@ -14,7 +14,7 @@ transactions=[
 
 #Login details
 login_details=[
-    {'username':'inbox.ayushpandey@gmail.com','password':'iwonttellyou'},
+    {'username':'myemailid@gmail.com','password':'iwonttellyou'},
      
 ]
 
